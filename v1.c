@@ -42,6 +42,10 @@ void listByAlphabetic (){
 	
 }
 void acheterproduit (int cd,int length , int qt){
+	
+	achep:
+			printf("\n\n\t\t entrer le code de produit:");
+			scanf("%d",&cd);
 	int i;
 	for(i=0;i<length;i++){
 		if(pharx[i].code==cd){
@@ -52,25 +56,71 @@ void acheterproduit (int cd,int length , int qt){
 			printf("prix: %.2f dh\n",pharx[i].prix);
 			printf("prix TTC: %.2f dh\n",ttc);
 			printf("quantite: %d \n",pharx[i].quantite);
-			
-					combien:
-				printf("\n\n\t\t tu veux acheter combien(quantite) :");
-					scanf("%d",&qt);
-					
-					if ( qt<0 || qt>pharx[i].quantite )
-					{
-						printf("\n \t la quantite dommender nest pas disponible:");
-						goto combien;
-					}
-					else {
-						pharx[i].quantite -= qt;
-					}
-					printf("\n \t le produit a ete acheter");
-			
+			break;
 		}
-	}
-	
+	//	else if(pharx[i].code!=cd) {
+	//			printf("\n \t Il n y a pas de produit pour ce code");
+	//		goto achep;	}}
+		
+	//	else { goto down;
+	//	}
+		//else {
+		//	printf("\n \t Il n y a pas de produit pour ce code");
+		//	goto achep;
+		}
+
+			
+			combien:
+		printf("\n\n\t\t tu veux acheter combien(quantite) :");
+			scanf("%d",&qt);
+			
+			if ( qt<0 || qt>pharx[i].quantite )
+			{
+				printf("\n \t la quantite dommender nest pas disponible:");
+				goto combien;
+			}
+			else {
+				pharx[i].quantite -= qt;
+			}
+			
+			printf("\n \t le produit a ete acheter");
+			
+	//		down:
+	//			if(pharx[i].code!=cd){
+	//			printf("\n \t Il n y a pas de produit pour ce code");
+	//		goto achep;	
+	//	}
 }
+
+
+ void recherchproduit (int cd1,int length){
+	
+	recherp:
+		printf("\n\n\t\t entrer le code de produit:");
+			scanf("%d",&cd1);
+	int i;
+	for(i=0;i<length;i++){
+		if(pharx[i].code==cd1){
+			
+			float ttc =pharx[i].prix+(((15*pharx[i].prix)/100));
+			printf("votre produit est : \n");
+			printf("code: %d \n",cd1);
+			printf("nom: %s \n",pharx[i].nom);
+			printf("prix: %.2f dh\n",pharx[i].prix);
+			printf("prix TTC: %.2f dh\n",ttc);
+			printf("quantite: %d \n",pharx[i].quantite);
+			break;
+		}
+		}	
+
+if(pharx[i].code!=cd1){
+	printf("\n \t Il n y a pas de produit pour ce code");
+			goto recherp;
+}
+}
+		
+	
+
 
 
 
@@ -234,9 +284,6 @@ int main() {
 			
 			scanf("%d",&choix2);
 			
-			
-			
-			
 			if (choix==1){
 				
 				
@@ -248,11 +295,9 @@ int main() {
 		}
 		case 4:{
 			int cd ,qt ;
-			printf("\n\n\t\t entrer le code de produit:");
-			scanf("%d",&cd);
+			
 			
 			acheterproduit(cd,length,qt);
-				
 			rvalue2:  //checkpoint
 						printf("\nRetour au Menu ( y ) :");
 						scanf("%s" , &rvalue);
@@ -264,6 +309,32 @@ int main() {
 							else{
 							  goto rvalue2;
 							}		
+			break;
+		}
+		
+		case 5:{
+			
+			
+			
+			break;
+		}
+		
+		
+		case 6:{
+			int cd1 , lengh;
+			recherchproduit(cd1,length);
+			
+										 rvalue3:  //checkpoint
+						printf("\nRetour au Menu ( y ) :");
+						scanf("%s" , &rvalue);
+							if(rvalue =='y')
+							{
+							  system("cls");
+							  goto depart;
+							}
+							else{
+							  goto rvalue3;
+							}
 			break;
 		}
 	}
