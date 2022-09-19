@@ -95,7 +95,6 @@ void acheterproduit (int cd,int length , int qt){
 
 }
 
-
  void recherchproduit (int cd1,int length){
 
 	recherp:
@@ -121,6 +120,47 @@ if(pharx[i].code!=cd1){
 			goto recherp;
 }
 }
+
+
+void allimenteproduit (int cd2,int length , int qt2){
+
+	achep:
+			printf("\n\n\t\t entrer le code de produit:");
+			scanf("%d",&cd2);
+	int i;
+	for(i=0;i<length;i++){
+		if(pharx[i].code==cd2){
+
+			float ttc =pharx[i].prix+(((15*pharx[i].prix)/100));
+			printf("votre produit est : \n");
+			printf("nom: %s \n",pharx[i].nom);
+			printf("prix: %.2f dh\n",pharx[i].prix);
+			printf("prix TTC: %.2f dh\n",ttc);
+			printf("quantite: %d \n",pharx[i].quantite);
+			break;
+		}
+	}
+			combien:
+		printf("\n\n\t\t tu veux acheter combien(quantite) :");
+			scanf("%d",&qt2);
+
+			if ( qt2<0 )
+			{
+				printf("\n \t la quantite tu veux allimenter nest pas disponible:");
+				goto combien;
+			}
+			else {
+				pharx[i].quantite += qt2;
+			}
+
+			printf("\n \t le produit a ete acheter");
+
+}
+
+
+
+
+
 
 
 
@@ -158,8 +198,6 @@ int main() {
 	scanf("%d",&choix);
 
 	system("cls");
-
-
 
 
 
@@ -407,16 +445,20 @@ int main() {
 			break;
 		}
 		case 7:{
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+						int cd2 ,qt2 ;
+
+			allimenteproduit(cd2,length,qt2);
+			R5:  //checkpoint
+						printf("\nRetour au Menu ( y ) :");
+						scanf("%s" , &rvalue);
+							if(rvalue =='y')
+							{
+							  system("cls");
+							  goto depart;
+							}
+							else{
+							  goto R5;
+							}
 			break;
 		}
 	}
