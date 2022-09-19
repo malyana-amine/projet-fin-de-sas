@@ -20,6 +20,9 @@ produit pharx[]={
 			{188503,"zproduit8",78,54},
 			{128574,"xproduit9",103,23}
 };
+
+
+
 int length = (sizeof(pharx))/(sizeof(pharx[0]));
 
 
@@ -58,11 +61,33 @@ int length = (sizeof(pharx))/(sizeof(pharx[0]));
         }
     }while(ech>0);
 }*/
+
+int check(int x){
+	int k=0;
+	for ( int i=0 ; i<length ; i++ ){
+		if(pharx[i].code==x){
+			k=1;
+			return 1;
+		}
+	}
+	if(k==0){
+		return 0;
+	}
+}
+
 void acheterproduit (int cd,int length , int qt){
 
 	achep:
 			printf("\n\n\t\t entrer le code de produit:");
 			scanf("%d",&cd);
+			int x=check(cd);
+				if (x==0){
+					printf("\n\n\t\tcode is invalid\n\n");
+					goto achep;
+				}
+			
+
+			
 	int i;
 	for(i=0;i<length;i++){
 		if(pharx[i].code==cd){
@@ -124,9 +149,16 @@ if(pharx[i].code!=cd1){
 
 void allimenteproduit (int cd2,int length , int qt2){
 
-	achep:
+	allep:
 			printf("\n\n\t\t entrer le code de produit:");
 			scanf("%d",&cd2);
+				int x=check(cd2);
+				if (x==0){
+					printf("\n\n\t\tcode is invalid\n\n");
+					goto allep;
+				}
+			
+			
 	int i;
 	for(i=0;i<length;i++){
 		if(pharx[i].code==cd2){
@@ -141,7 +173,7 @@ void allimenteproduit (int cd2,int length , int qt2){
 		}
 	}
 			combien:
-		printf("\n\n\t\t tu veux acheter combien(quantite) :");
+		printf("\n\n\t\t tu veux allimenter combien(quantite) :");
 			scanf("%d",&qt2);
 
 			if ( qt2<0 )
@@ -156,13 +188,6 @@ void allimenteproduit (int cd2,int length , int qt2){
 			printf("\n \t le produit a ete acheter");
 
 }
-
-
-
-
-
-
-
 
 int main() {
 	int choix;
@@ -224,7 +249,7 @@ int main() {
 										if(strcmp(pharx[k].nom,pharx[length].nom) == 0){
 							printf("this name already Used , Try Another ! \n");
 							goto nom_0;
-						}}
+ 						}}
 
 
 
@@ -315,6 +340,8 @@ int main() {
 			printf("\t\t----------------------------------\n");
 			printf("\t\t2. afficher par alphabet  .\n\n");
 			printf("\t\t----------------------------------\n");
+			printf("\t\t3. quantite <3  .\n\n");
+			printf("\t\t----------------------------------\n");
 
 			printf("\n\t entrer votre choix :");
 
@@ -394,6 +421,30 @@ int main() {
 							}
 							else{
 							  goto rvalue4;
+							}
+			}
+			
+			if(choix2==3){
+				for(int i=0;i<length;i++){
+					if(pharx[i].quantite<3){
+						
+			printf("code: %d \n",pharx[i].code);
+			printf("nom: %s \n",pharx[i].nom);
+			printf("prix: %.2f dh\n",pharx[i].prix);
+			printf("quantite: %d \n\n",pharx[i].quantite);
+						
+					}
+				}
+														rvalue6:  //checkpoint
+						printf("\nRetour au Menu ( y ) :");
+						scanf("%s" , &rvalue);
+							if(rvalue =='y')
+							{
+							  system("cls");
+							  goto depart;
+							}
+							else{
+							  goto rvalue6;
 							}
 			}
 
