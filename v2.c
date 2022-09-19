@@ -26,41 +26,7 @@ produit pharx[]={
 int length = (sizeof(pharx))/(sizeof(pharx[0]));
 
 
-/*void listByprice (){
-    int j=0;
-    int ech;
-    produit tmp;
-    do{
-        ech=0;
-        int i;
-        for(i=0;i<length-1;i++){
-            if(pharx[i].prix<pharx[i+1].prix){
-                tmp = pharx[i];
-                pharx[i]=pharx[i+1];
-                pharx[i+1]=tmp;
-            ech++;
-        }
-        }
-    }while(ech>0);
-}*/
 
-/*void listByalphabet (){
-    int j=0;
-    int ech;
-    produit tmp;
-    do{
-        ech=0;
-        int i;
-        for(i=0;i<length-1;i++){
-            if(strcmp(pharx[i].nom,pharx[i+1].nom)>0){
-                tmp = pharx[i];
-                pharx[i]=pharx[i+1];
-                pharx[i+1]=tmp;
-            ech++;
-        }
-        }
-    }while(ech>0);
-}*/
 
 int check(int x){
 	int k=0;
