@@ -280,9 +280,9 @@ int main() {
 
 
 			++length;
-
+			printf("\n\t le produit %d a ete ajouter\n\n",i);
 			}
-			printf("\n\t le produit a ete ajuter\n\n");
+			printf("\n\t les produits ont ete ajouter\n\n");
 			}
 			else{
 				goto chP;
