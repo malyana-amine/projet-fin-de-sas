@@ -1,12 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
+
 
 typedef struct product{
 int code;
 char nom[10];
 int quantite;
 float prix;
+char date[20];
 } produit;
 
 produit pharx[]={
@@ -19,9 +22,7 @@ produit pharx[]={
 			{109684,"yproduit7",84,38},
 			{188503,"zproduit8",78,54},
 			{128574,"xproduit9",103,23}
-};
-
-
+}; 
 
 int length = (sizeof(pharx))/(sizeof(pharx[0]));
 
@@ -41,7 +42,7 @@ int check(int x){
 	}
 }
 
-void acheterproduit (int cd,int length , int qt){
+void acheterproduit (int cd,int length , int qt ){
 
 	achep:
 			printf("\n\n\t\t entrer le code de produit:");
@@ -51,9 +52,6 @@ void acheterproduit (int cd,int length , int qt){
 					printf("\n\n\t\tcode is invalid\n\n");
 					goto achep;
 				}
-			
-
-			
 	int i;
 	for(i=0;i<length;i++){
 		if(pharx[i].code==cd){
@@ -63,7 +61,7 @@ void acheterproduit (int cd,int length , int qt){
 			printf("nom: %s \n",pharx[i].nom);
 			printf("prix: %.2f dh\n",pharx[i].prix);
 			printf("prix TTC: %.2f dh\n",ttc);
-			printf("quantite: %d \n",pharx[i].quantite);
+			printf("quantite: %d \n",pharx[i].quantite);    
 			break;
 		}
 		}
@@ -80,10 +78,20 @@ void acheterproduit (int cd,int length , int qt){
 			}
 			else {
 				pharx[i].quantite -= qt;
+				
 			}
-
-			printf("\n \t le produit a ete acheter");
-
+			
+			time_t tm;
+		    time(&tm);
+			printf("\n \t le produit a ete acheter \n\n");
+			
+			strcpy(pharx[i].date,ctime(&tm));
+			
+			printf("votre produit est : \n");
+			printf("nom: %s \n",pharx[i].nom);
+			printf("prix: %.2f dh\n",pharx[i].prix);
+			printf("quantite: %d \n",pharx[i].quantite);
+			printf("date d'achat : %s \n",pharx[i].date);
 }
 
  void recherchproduit (int cd1,int length){
@@ -155,6 +163,8 @@ void allimenteproduit (int cd2,int length , int qt2){
 
 }
 
+ 
+
 int main() {
 	int choix;
 	int length = (sizeof(pharx))/(sizeof(pharx[0]));
@@ -171,15 +181,13 @@ int main() {
 	printf("\t\t----------------------------------\n");
 	printf("\t\t4. acheter un produit .\n\n");
 	printf("\t\t----------------------------------\n");
-	printf("\t\t5. produit deja vendu .\n\n");
+	printf("\t\t5. recherche un produit .\n\n");
 	printf("\t\t----------------------------------\n");
-	printf("\t\t6. recherche un produit .\n\n");
+	printf("\t\t6. alimenter le stock .\n\n");
 	printf("\t\t----------------------------------\n");
-	printf("\t\t7. alimenter le stock .\n\n");
+	printf("\t\t7. suprimer un produit .\n\n");
 	printf("\t\t----------------------------------\n");
-	printf("\t\t8. suprimer un produit .\n\n");
-	printf("\t\t----------------------------------\n");
-	printf("\t\t9. statistiques .\n\n");
+	printf("\t\t8. statistiques .\n\n");
 	printf("\t\t----------------------------------\n");
 	printf("\t\t0. Quitter .\n\n");
 	printf("=========================================================\n");
@@ -306,7 +314,7 @@ int main() {
 			printf("\t\t----------------------------------\n");
 			printf("\t\t2. afficher par alphabet  .\n\n");
 			printf("\t\t----------------------------------\n");
-			printf("\t\t3. quantite <3  .\n\n");
+			printf("\t\t3. etat de stock (quantite <3) .\n\n");
 			printf("\t\t----------------------------------\n");
 
 			printf("\n\t entrer votre choix :");
@@ -436,15 +444,8 @@ int main() {
 			break;
 		}
 
+
 		case 5:{
-
-
-
-			break;
-		}
-
-
-		case 6:{
 			int cd1 , lengh;
 			recherchproduit(cd1,length);
 
@@ -461,7 +462,7 @@ int main() {
 							}
 			break;
 		}
-		case 7:{
+		case 6:{
 						int cd2 ,qt2 ;
 
 			allimenteproduit(cd2,length,qt2);
@@ -476,6 +477,75 @@ int main() {
 							else{
 							  goto R5;
 							}
+			break;
+		}
+		case 7:{
+			int cd3;
+			supp:
+			printf("\n\n\t\t entrer le code de produit:");
+			scanf("%d",&cd3);
+				int x=check(cd3);
+				if (x==0){
+					printf("\n\n\t\tcode is invalid\n\n");
+					goto supp;
+				}
+			
+	int i;
+	int pos;
+	for(i=0;i<length;i++){
+		if(pharx[i].code==cd3){
+			printf("Voulez vous supprimer cet produit : \n");
+			printf("nom: %s \n",pharx[i].nom);
+			printf("prix: %.2f dh\n",pharx[i].prix);
+			printf("quantite: %d \n",pharx[i].quantite);
+			pos = i;
+			break;
+		}
+	}
+	int choix3,j;
+	printf("\n\n\t supprimer!!!");
+	printf("\n\n\t\t 1. oui");
+	printf("\n\t\t 2. non");
+	scanf("%d",&choix3);
+	
+	if(choix3==1){
+		for(j=pos;j<length-1;j++){
+			pharx[j]=pharx[j+1];
+			
+		}
+		
+	
+    
+	length --;
+	j--;
+	}
+						R6:  //checkpoint
+						printf("\nRetour au Menu ( y ) :");
+						scanf("%s" , &rvalue);
+							if(rvalue =='y')
+							{
+							  system("cls");
+							  goto depart;
+							}
+							else{
+							  goto R6;
+							}
+			break;
+		}
+		case 8:{
+			
+			printf("1. afichier le total");
+			printf("2. afichier le MAX");
+			printf("3. afichier le MIN");
+			printf("4. afichier le MOYENE");
+			
+			
+			
+			
+			
+			
+			
+			
 			break;
 		}
 	}
