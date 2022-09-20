@@ -18,10 +18,10 @@ produit pharx[]={
 			{508732,"fproduit3",82,1},
 			{839632,"cproduit4",98,10},
 			{256522,"bproduit5",188,9},
-			{284892,"iproduit6",8,49},
+			{284892,"iproduit6",1,49},
 			{109684,"yproduit7",84,38},
 			{188503,"zproduit8",78,54},
-			{128574,"xproduit9",103,23}
+			{128574,"xproduit9",2,23}
 }; 
 
 int length = (sizeof(pharx))/(sizeof(pharx[0]));
@@ -398,10 +398,10 @@ int main() {
 							}
 			}
 			
-			if(choix2==3){
-				for(int i=0;i<length;i++){
-					if(pharx[i].quantite<3){
-						
+			if(choix2==3){int i,j=0;
+				for(i=0;i<length;i++){
+					if(pharx[i].quantite<=3){
+						++j;
 			printf("code: %d \n",pharx[i].code);
 			printf("nom: %s \n",pharx[i].nom);
 			printf("prix: %.2f dh\n",pharx[i].prix);
@@ -409,7 +409,9 @@ int main() {
 						
 					}
 				}
-														rvalue6:  //checkpoint
+				printf("Quantite de produits inferieure a 3 est: %d produits",j);
+				
+					rvalue6:  //checkpoint
 						printf("\nRetour au Menu ( y ) :");
 						scanf("%s" , &rvalue);
 							if(rvalue =='y')
@@ -449,7 +451,7 @@ int main() {
 			int cd1 , lengh;
 			recherchproduit(cd1,length);
 
-										 rvalue3:  //checkpoint
+							rvalue3:  //checkpoint
 						printf("\nRetour au Menu ( y ) :");
 						scanf("%s" , &rvalue);
 							if(rvalue =='y')
