@@ -70,6 +70,7 @@ void acheterproduit (int cd,int length , int qt ){
 			combien:
 		printf("\n\n\t\t tu veux acheter combien(quantite) :");
 			scanf("%d",&qt);
+			system("cls");
 
 			if ( qt<0 || qt>pharx[i].quantite )
 			{
@@ -149,7 +150,7 @@ void allimenteproduit (int cd2,int length , int qt2){
 			combien:
 		printf("\n\n\t\t tu veux allimenter combien(quantite) :");
 			scanf("%d",&qt2);
-
+                system("cls");
 			if ( qt2<0 )
 			{
 				printf("\n \t la quantite tu veux allimenter nest pas disponible:");
@@ -159,12 +160,12 @@ void allimenteproduit (int cd2,int length , int qt2){
 				pharx[i].quantite += qt2;
 			}
 
-			printf("\n \t le produit a ete acheter");
-
+			printf("\n \t le produit a ete allimenter: ");
+			
+			printf("\n\t\tnom: %s \n",pharx[i].nom);
+			printf("\t\tprix: %.2f dh\n",pharx[i].prix);
+			printf("\t\tquantite: %d \n",pharx[i].quantite);
 }
-
- 
-
 int main() {
 	int choix;
 	int length = (sizeof(pharx))/(sizeof(pharx[0]));
@@ -197,8 +198,6 @@ int main() {
 	scanf("%d",&choix);
 
 	system("cls");
-
-
 
 	switch(choix){
 		case 1 : {
@@ -289,6 +288,7 @@ int main() {
 
 			++length;
 			printf("\n\t le produit %d a ete ajouter\n\n",i);
+			system("cls");
 			}
 			printf("\n\t les produits ont ete ajouter\n\n");
 			}
@@ -321,6 +321,7 @@ int main() {
 
 
 			scanf("%d",&choix2);
+			system("cls");
 
 			if (choix2==1){
 				
@@ -341,10 +342,10 @@ int main() {
     }while(ech>0);
 				int i;
 					for (i=0;i<length;i++){
-			printf("code: %d \n",pharx[i].code);
-			printf("nom: %s \n",pharx[i].nom);
-			printf("prix: %.2f dh\n",pharx[i].prix);
-			printf("quantite: %d \n\n",pharx[i].quantite);
+			printf("\tcode: %d \n",pharx[i].code);
+			printf("\tnom: %s \n",pharx[i].nom);
+			printf("\tprix: %.2f dh\n",pharx[i].prix);
+			printf("\tquantite: %d \n\n",pharx[i].quantite);
 			}
 			
 										rvalue5:  //checkpoint
@@ -520,6 +521,14 @@ int main() {
 	j--;
 	
 	printf("votre coix a ete supprimer!!");
+	
+		for (int i=0;i<length;i++){
+			printf("\nnom: %s \n",pharx[i].nom);
+			printf("code : %d \n",pharx[i].code );
+			printf("quantite: %d \n",pharx[i].quantite);
+			
+		}
+	
 	
 							R8:  //checkpoint
 						printf("\nRetour au Menu ( y ) :");
