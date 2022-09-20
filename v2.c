@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <time.h>
+#include <string.h>
 
 
 typedef struct product{
@@ -131,9 +131,7 @@ void allimenteproduit (int cd2,int length , int qt2){
 				if (x==0){
 					printf("\n\n\t\tcode is invalid\n\n");
 					goto allep;
-				}
-			
-			
+				}		
 	int i;
 	for(i=0;i<length;i++){
 		if(pharx[i].code==cd2){
@@ -193,7 +191,7 @@ int main() {
 	printf("\t\t0. Quitter .\n\n");
 	printf("=========================================================\n");
 
-
+bigup:
 	printf("\t entrer votre choix :");
 	scanf("%d",&choix);
 
@@ -568,10 +566,39 @@ int main() {
 			printf("1. afichier le total");
 			printf("2. afichier le MAX");
 			printf("3. afichier le MIN");
-			printf("4. afichier le MOYENE");
-			
-						
+			printf("4. afichier le MOYENE");			
 			break;
 		}
+	}
+	if(choix>8 || choix<0){
+		
+		
+	printf("==========================MENU==========================\n\n\n");
+
+	printf("\n\n\t\t====== !!! please entree un choix entre 0 et 8 ======!!!\n");
+	printf("\t\t----------------------------------------------------------------\n");
+
+
+	printf("\t\t1. ajouter un seul produit .\n\n");
+	printf("\t\t----------------------------------\n");
+	printf("\t\t2. ajouter plusieur produits .\n\n");
+	printf("\t\t----------------------------------\n");
+	printf("\t\t3. lister les produits .\n\n");
+	printf("\t\t----------------------------------\n");
+	printf("\t\t4. acheter un produit .\n\n");
+	printf("\t\t----------------------------------\n");
+	printf("\t\t5. recherche un produit .\n\n");
+	printf("\t\t----------------------------------\n");
+	printf("\t\t6. alimenter le stock .\n\n");
+	printf("\t\t----------------------------------\n");
+	printf("\t\t7. suprimer un produit .\n\n");
+	printf("\t\t----------------------------------\n");
+	printf("\t\t8. statistiques .\n\n");
+	printf("\t\t----------------------------------\n");
+	printf("\t\t0. Quitter .\n\n");
+	printf("=========================================================\n");
+		
+		goto bigup;
+		
 	}
 }
