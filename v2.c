@@ -74,7 +74,7 @@ void acheterproduit (int cd,int length , int qt ){
 
 			if ( qt<0 || qt>pharx[i].quantite )
 			{
-				printf("\n \t la quantite dommender nest pas disponible:");
+				printf("\n \t la quantite dommender nest pas disponible(une valeur interieur %d):",pharx[i].quantite);
 				goto combien;
 			}
 			else {
