@@ -502,24 +502,24 @@ int main() {
 			break;
 		}
 	}
+	up1:
 	int choix3,j;
 	printf("\n\n\t supprimer!!!");
 	printf("\n\n\t\t 1. oui");
 	printf("\n\t\t 2. non");
+	printf("\n\n\t\t votre choix:");
+	
 	scanf("%d",&choix3);
 	
 	if(choix3==1){
 		for(j=pos;j<length-1;j++){
-			pharx[j]=pharx[j+1];
-			
-		}
-		
-	
-    
+			pharx[j]=pharx[j+1];}
 	length --;
 	j--;
-	}
-						R6:  //checkpoint
+	
+	printf("votre coix a ete supprimer!!");
+	
+							R8:  //checkpoint
 						printf("\nRetour au Menu ( y ) :");
 						scanf("%s" , &rvalue);
 							if(rvalue =='y')
@@ -528,9 +528,29 @@ int main() {
 							  goto depart;
 							}
 							else{
-							  goto R6;
+							  goto R8;
 							}
-			break;
+	}
+	if(choix3==2){
+
+							R7:  //checkpoint
+						printf("\nRetour au Menu ( y ) :");
+						scanf("%s" , &rvalue);
+							if(rvalue =='y')
+							{
+							  system("cls");
+							  goto depart;
+							}
+							else{
+							  goto R7;
+							}}
+	if(choix!=1 && choix!=1){
+		printf("Cette choix n existe pas");
+		
+		goto up1;
+	}
+	
+				break;
 		}
 		case 8:{
 			
@@ -539,13 +559,7 @@ int main() {
 			printf("3. afichier le MIN");
 			printf("4. afichier le MOYENE");
 			
-			
-			
-			
-			
-			
-			
-			
+						
 			break;
 		}
 	}
