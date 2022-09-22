@@ -9,7 +9,6 @@ int code;
 char nom[10];
 int quantite;
 float prix;
-// char date[20];
 } produit;
 
 produit pharx[]={
@@ -28,7 +27,6 @@ typedef struct statistique{
 char nom[10];
 int quantiteVendu;
 float prix;
-// char date[20];
 } statistique;
 
 statistique state[]={
@@ -37,8 +35,6 @@ statistique state[]={
 
 int length = (sizeof(pharx))/(sizeof(pharx[0]));
 int lenState = (sizeof(state))/(sizeof(state[0]));
-
-
 
 
 int check(int x){
@@ -53,8 +49,6 @@ int check(int x){
 		return 0;
 	}
 }
-
-
  void recherchproduit (int cd1,int length){
 
 	recherp:
@@ -124,6 +118,7 @@ void allimenteproduit (int cd2,int length , int qt2){
 			printf("\t\tprix: %.2f dh\n",pharx[i].prix);
 			printf("\t\tquantite: %d \n",pharx[i].quantite);
 }
+
 int main() {
 	int choix;
 	int length = (sizeof(pharx))/(sizeof(pharx[0]));
@@ -132,25 +127,25 @@ int main() {
 
 
 	depart:
-	printf("==========================MENU==========================\n\n\n");
-	printf("\t\t1. ajouter un seul produit .\n\n");
-	printf("\t\t----------------------------------\n");
-	printf("\t\t2. ajouter plusieur produits .\n\n");
-	printf("\t\t----------------------------------\n");
-	printf("\t\t3. lister les produits .\n\n");
-	printf("\t\t----------------------------------\n");
-	printf("\t\t4. acheter un produit .\n\n");
-	printf("\t\t----------------------------------\n");
-	printf("\t\t5. recherche un produit .\n\n");
-	printf("\t\t----------------------------------\n");
-	printf("\t\t6. alimenter le stock .\n\n");
-	printf("\t\t----------------------------------\n");
-	printf("\t\t7. suprimer un produit .\n\n");
-	printf("\t\t----------------------------------\n");
-	printf("\t\t8. statistiques .\n\n");
-	printf("\t\t----------------------------------\n");
-	printf("\t\t0. Quitter .\n\n");
-	printf("=========================================================\n");
+	printf("\t\t\t============================MENU=============================\n\n\n");
+	printf("\t\t\t1. ajouter un seul produit .\n\n");
+	printf("\t\t\t***********************************\n");
+	printf("\t\t\t2. ajouter plusieur produits .\n\n");
+	printf("\t\t\t***********************************\n");
+	printf("\t\t\t3. lister les produits .\n\n");
+	printf("\t\t\t***********************************\n");
+	printf("\t\t\t4. acheter un produit .\n\n");
+	printf("\t\t\t***********************************\n");
+	printf("\t\t\t5. recherche un produit .\n\n");
+	printf("\t\t\t***********************************\n");
+	printf("\t\t\t6. alimenter le stock .\n\n");
+	printf("\t\t\t***********************************\n");
+	printf("\t\t\t7. suprimer un produit .\n\n");
+	printf("\t\t\t***********************************\n");
+	printf("\t\t\t8. statistiques .\n\n");
+	printf("\t\t\t***********************************\n");
+	printf("\t\t\t0. Quitter .\n\n");
+	printf("**************************************************\n");
 
 bigup:
 	printf("\t entrer votre choix :");
@@ -186,9 +181,9 @@ bigup:
  						}}
 
 
-
 						printf("\tentrer la quantite:");
 						scanf("%d",&pharx[length].quantite);
+						
 
 						printf("\tentrer le prix de produit :");
 						scanf("%f",&pharx[length].prix);
@@ -293,23 +288,18 @@ bigup:
 
 			if (choix2==1){
 				
-    int j=0;
-    int ech;
     produit tmp;
-    do{
-        ech=0;
-        int i;
+		int i,j;
         for(i=0;i<length-1;i++){
-            if(pharx[i].prix<pharx[i+1].prix){
+        	for(j=i+1; j<length ;j++){
+            if(pharx[i].prix<pharx[j].prix){
                 tmp = pharx[i];
-                pharx[i]=pharx[i+1];
-                pharx[i+1]=tmp;
-            ech++;
+                pharx[i]=pharx[j];
+                pharx[j]=tmp;
         }
-        }
-    }while(ech>0);
-				int i;
-					for (i=0;i<length;i++){
+	}
+};	
+			for (i=0;i<length;i++){
 			printf("\tcode: %d \n",pharx[i].code);
 			printf("\tnom: %s \n",pharx[i].nom);
 			printf("\tprix: %.2f dh\n",pharx[i].prix);
@@ -331,22 +321,33 @@ bigup:
 			}
 			
 			if (choix2==2){
-				    int j=0;
-    				int ech;
-    	produit tmp;
-    		do{
-        	ech=0;
-        		int i;
-        			for(i=0;i<length-1;i++){
-            if(strcasecmp(pharx[i].nom,pharx[i+1].nom)>0){
+//				    int j=0;
+//    				int ech;
+//    	produit tmp;
+//    		do{
+//        	ech=0;
+//        		int i;
+//        			for(i=0;i<length-1;i++){
+//            if(strcasecmp(pharx[i].nom,pharx[i+1].nom)>0){
+//                tmp = pharx[i];
+//                pharx[i]=pharx[i+1];
+//                pharx[i+1]=tmp;
+//            ech++;
+//        }
+//        }
+//    }while(ech>0);;
+
+		int i,j;
+		produit tmp;
+        		for(i=0;i<length;i++){
+        			for(j=0;j<length;j++){
+            if(strcasecmp(pharx[i].nom,pharx[j].nom)<0){
                 tmp = pharx[i];
-                pharx[i]=pharx[i+1];
-                pharx[i+1]=tmp;
-            ech++;
-        }
-        }
-    }while(ech>0);;
-								int i;
+                pharx[i]=pharx[j];
+                pharx[j]=tmp;
+            }}
+			}                
+				
 					for (i=0;i<length;i++){
 			printf("code: %d \n",pharx[i].code);
 			printf("nom: %s \n",pharx[i].nom);
@@ -354,7 +355,7 @@ bigup:
 			printf("quantite: %d \n\n",pharx[i].quantite);
 			
 			}
-										rvalue4:  //checkpoint
+					rvalue4:
 						printf("\nRetour au Menu ( y ) :");
 						scanf("%s" , &rvalue);
 							if(rvalue =='y')
@@ -539,7 +540,6 @@ bigup:
 		for(j=pos;j<length-1;j++){
 			pharx[j]=pharx[j+1];}
 	length --;
-	j--;
 	
 	printf("votre choix a ete supprimer!!");
 	
@@ -595,7 +595,6 @@ bigup:
 			printf("nom: %s \n",state[j].nom);
 			printf("prix: %.2f dh\n",state[j].prix);
 			printf("quantite: %d \n",state[j].quantiteVendu);
-//			printf("date d'achat : %s \n\n",state[j].date);
 			}
 			up11:
 			printf("1. afichier le total \n");
@@ -623,10 +622,7 @@ bigup:
 							else{
 							  goto R10;
 							}
-				
-				
-				
-			}
+							}
 			else if(choix4==2){
 				for(i=0 ; i<lenState ; i++){
 					sum+=(state[i].prix*state[i].quantiteVendu);
@@ -669,9 +665,6 @@ bigup:
 							else{
 							  goto R11;
 							}
-				
-			
-			
 			}else if(choix4==4){
 			for ( i = 0; i < lenState; i++) {
 			    if (state[0].prix > state[i].prix) {
@@ -699,20 +692,12 @@ bigup:
 				
 				printf("cet choix nest pas existe (entree un choix entre 1 et 4) :\n");
 				goto up11;
-				
-				
-				
 			}
 			break;
 		}
+		case 0: {
+			exit(0);
+			break;
+		}
 	}
-	
-	
-	
-	
-
-//
-//	printf("\n\n\t\t====== !!! please entree un choix entre 0 et 8 ======!!!\n");
-//	printf("\t\t----------------------------------------------------------------\n");
-
 }
